@@ -1,12 +1,12 @@
-#N canvas 386 120 865 709.062 10;
+#N canvas 401 88 865 709.062 10;
 #X obj 349 403 cnv 15 128 71 empty empty Nunchuk 62 57 0 12 -233017
 -1 0;
-#X obj 42 30 tgl 15 0 empty empty empty 17 7 0 10 -258965 -1 -1 1 1
+#X obj 42 30 tgl 15 0 empty empty empty 17 7 0 10 -258965 -1 -1 0 1
 ;
 #X obj 42 50 xwii;
 #X floatatom 42 116 5 0 0 0 - - -, f 5;
 #X floatatom 99 116 5 0 0 0 - - -, f 5;
-#X obj 269 20 tgl 15 0 empty empty empty 17 7 0 10 -64657 -1 -1 1 1
+#X obj 269 20 tgl 15 0 empty empty empty 17 7 0 10 -64657 -1 -1 0 1
 ;
 #X obj 269 40 metro 250;
 #X obj 42 94 unpack f f;
@@ -61,7 +61,7 @@
 #X obj 135 143 spigot;
 #X obj 22 67 tgl 15 0 empty empty accel 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 82 67 tgl 15 0 empty empty motion+ 17 7 0 10 -262144 -1 -1 1
+#X obj 82 67 tgl 15 0 empty empty motion+ 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 21 15 inlet;
 #X obj 21 37 t f f f f;
@@ -313,122 +313,177 @@ status. Note that results will be shown in the main patch., f 80;
 #X connect 13 0 15 0;
 #X restore 267 221 pd more;
 #X text 326 221 Click here for more information;
-#N canvas 624 168 766 573.062 sound 0;
-#X obj 21 34 r x;
-#X obj 21 96 + 48;
+#N canvas 625 202 741 533.062 sound 0;
 #X floatatom 53 34 5 0 0 0 - - -, f 5;
-#X obj 21 256 makenote 64 500;
-#X obj 21 278 noteout 1;
+#X obj 21 166 makenote 64 500;
+#X obj 21 188 noteout 1;
 #X obj 21 34 r x;
 #X floatatom 53 34 5 0 0 2 transpose tx -, f 5;
-#X obj 21 256 makenote 64 500;
-#X obj 21 278 noteout 1;
-#X obj 64 96 hsl 64 15 0 127 0 0 empty vx velocity -2 -8 0 10 -262144
+#X obj 21 166 makenote 64 500;
+#X obj 21 188 noteout 1;
+#X obj 64 116 hsl 64 15 0 127 0 0 empty vx velocity -2 -8 0 10 -262144
 -1 -1 3175 1;
-#X obj 21 61 change;
 #X obj 151 34 r x;
-#X obj 151 96 + 48;
 #X floatatom 183 34 5 0 0 0 - - -, f 5;
-#X obj 151 256 makenote 64 500;
-#X obj 151 278 noteout 1;
+#X obj 151 166 makenote 64 500;
+#X obj 151 188 noteout 1;
 #X floatatom 183 34 5 0 0 2 transpose ty -, f 5;
-#X obj 151 256 makenote 64 500;
-#X obj 194 96 hsl 64 15 0 127 0 0 empty vy velocity -2 -8 0 10 -262144
+#X obj 151 166 makenote 64 500;
+#X obj 194 116 hsl 64 15 0 127 0 0 empty vy velocity -2 -8 0 10 -262144
 -1 -1 3969 1;
-#X obj 151 61 change;
 #X obj 281 34 r x;
-#X obj 281 96 + 48;
 #X floatatom 313 34 5 0 0 0 - - -, f 5;
-#X obj 281 256 makenote 64 500;
-#X obj 281 278 noteout 1;
+#X obj 281 166 makenote 64 500;
+#X obj 281 188 noteout 1;
 #X floatatom 313 34 5 0 0 2 transpose tz -, f 5;
-#X obj 281 256 makenote 64 500;
-#X obj 324 96 hsl 64 15 0 127 0 0 empty vz velocity -2 -8 0 10 -262144
--1 -1 4961 1;
-#X obj 281 61 change;
+#X obj 281 166 makenote 64 500;
+#X obj 324 116 hsl 64 15 0 127 0 0 empty vz velocity -2 -8 0 10 -262144
+-1 -1 2580 1;
 #X obj 151 34 r y;
 #X obj 281 34 r z;
-#X obj 151 278 noteout 2;
-#X obj 281 278 noteout 3;
-#X obj 433 156 loadbang;
-#X msg 433 178 \; tx 48 \; vx 64 \; ty 53 \; vy 80 \; tz 48 \; vz 100
-;
-#X floatatom 21 118 5 0 0 0 - - -, f 5;
-#X floatatom 151 118 5 0 0 0 - - -, f 5;
-#X floatatom 281 118 5 0 0 0 - - -, f 5;
-#X text 67 310 This demonstrates how one might go about using the Motion+
-location data. Here we just generate MIDI notes from the x y z data.
-Note that you need to have the Motion+ sensor activated in the main
-patch and a MIDI synthesizer hooked up to Pd's MIDI output to make
-this work.;
-#X obj 21 169 max 12;
-#X obj 21 191 min 120;
-#X obj 21 213 change;
-#X floatatom 21 235 5 0 0 0 - - -, f 5;
-#X obj 151 169 max 12;
-#X obj 151 191 min 120;
-#X obj 151 213 change;
-#X floatatom 151 235 5 0 0 0 - - -, f 5;
-#X obj 281 169 max 12;
-#X obj 281 191 min 120;
-#X obj 281 213 change;
-#X floatatom 281 235 5 0 0 0 - - -, f 5;
-#X obj 21 139 spigot;
-#X obj 151 139 spigot;
-#X obj 281 139 spigot;
-#X obj 425 21 inlet;
-#X obj 425 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X connect 1 0 35 0;
-#X connect 2 0 1 1;
+#X obj 151 188 noteout 2;
+#X obj 281 188 noteout 3;
+#X obj 433 23 loadbang;
+#X floatatom 21 145 5 0 0 0 - - -, f 5;
+#X floatatom 151 145 5 0 0 0 - - -, f 5;
+#X floatatom 281 145 5 0 0 0 - - -, f 5;
+#N canvas 396 394 506 313.062 map 0;
+#X obj 12 14 inlet;
+#X obj 12 36 abs;
+#X obj 12 58 mod 36;
+#X obj 12 80 change;
+#X obj 12 102 + 48;
+#X obj 12 124 spigot;
+#X obj 52 14 inlet;
+#X obj 92 14 inlet;
+#X obj 12 146 outlet;
+#X text 73 59 The motion data is all over the place \, so we apply
+some simple transformations to turn them into a somewhat reasonable
+stream of notes (absolute values \, mod 36). 1st inlet is the raw data
+\, 2nd inlet the desired transposition \, 3rd inlet a 0/1 value controlling
+a spigot., f 42;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X connect 3 1 4 1;
-#X connect 5 0 10 0;
-#X connect 7 0 8 0;
-#X connect 7 1 8 1;
-#X connect 9 0 7 1;
-#X connect 10 0 1 0;
-#X connect 12 0 36 0;
-#X connect 13 0 12 1;
-#X connect 14 0 15 0;
-#X connect 14 1 15 1;
-#X connect 17 0 31 0;
-#X connect 17 1 31 1;
-#X connect 18 0 17 1;
-#X connect 19 0 12 0;
-#X connect 21 0 37 0;
-#X connect 22 0 21 1;
-#X connect 23 0 24 0;
-#X connect 23 1 24 1;
-#X connect 26 0 32 0;
-#X connect 26 1 32 1;
-#X connect 27 0 26 1;
-#X connect 28 0 21 0;
-#X connect 29 0 19 0;
-#X connect 30 0 28 0;
-#X connect 33 0 34 0;
-#X connect 35 0 51 0;
-#X connect 36 0 52 0;
-#X connect 37 0 53 0;
-#X connect 39 0 40 0;
-#X connect 40 0 41 0;
-#X connect 41 0 42 0;
-#X connect 42 0 7 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 1;
+#X connect 7 0 5 1;
+#X restore 21 82 pd map;
+#X floatatom 21 58 5 0 0 0 - - -, f 5;
+#X obj 110 21 inlet;
+#X obj 110 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 240 21 inlet;
+#X obj 240 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 370 21 inlet;
+#X obj 370 43 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 396 394 506 313.062 map 0;
+#X obj 12 14 inlet;
+#X obj 12 36 abs;
+#X obj 12 58 mod 36;
+#X obj 12 80 change;
+#X obj 12 102 + 48;
+#X obj 12 124 spigot;
+#X obj 52 14 inlet;
+#X obj 92 14 inlet;
+#X obj 12 146 outlet;
+#X text 73 59 The motion data is all over the place \, so we apply
+some simple transformations to turn them into a somewhat reasonable
+stream of notes (absolute values \, mod 36). 1st inlet is the raw data
+\, 2nd inlet the desired transposition \, 3rd inlet a 0/1 value controlling
+a spigot., f 42;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 1;
+#X connect 7 0 5 1;
+#X restore 151 82 pd map;
+#X floatatom 151 58 5 0 0 0 - - -, f 5;
+#N canvas 396 394 506 313.062 map 0;
+#X obj 12 14 inlet;
+#X obj 12 36 abs;
+#X obj 12 58 mod 36;
+#X obj 12 80 change;
+#X obj 12 102 + 48;
+#X obj 12 124 spigot;
+#X obj 52 14 inlet;
+#X obj 92 14 inlet;
+#X obj 12 146 outlet;
+#X text 73 59 The motion data is all over the place \, so we apply
+some simple transformations to turn them into a somewhat reasonable
+stream of notes (absolute values \, mod 36). 1st inlet is the raw data
+\, 2nd inlet the desired transposition \, 3rd inlet a 0/1 value controlling
+a spigot., f 42;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 4 1;
+#X connect 7 0 5 1;
+#X restore 281 82 pd map;
+#X floatatom 281 58 5 0 0 0 - - -, f 5;
+#X text 42 267 This demonstrates how one might go about using the Motion+
+location data. Here we just generate MIDI notes from the x y z data
+(see the map subpatches for details). Note that you need to have the
+Motion+ sensor activated in the main patch and a MIDI synthesizer hooked
+up to Pd's MIDI output to make this work.;
+#X floatatom 66 214 5 0 0 0 - progx -, f 5;
+#X obj 66 235 pgmout 1;
+#X floatatom 196 214 5 0 0 0 - progy -, f 5;
+#X floatatom 326 214 5 0 0 0 - progz -, f 5;
+#X obj 196 235 pgmout 2;
+#X obj 326 235 pgmout 3;
+#X msg 433 45 \; tx 48 \; vx 64 \; ty 36 \; vy 80 \; tz 24 \; vz 52
+\; progx 10 \; progy 12 \; progz 14;
+#X connect 1 0 2 0;
+#X connect 1 1 2 1;
+#X connect 3 0 31 0;
+#X connect 4 0 30 1;
+#X connect 5 0 6 0;
+#X connect 5 1 6 1;
+#X connect 7 0 5 1;
+#X connect 10 0 11 0;
+#X connect 10 1 11 1;
+#X connect 12 0 38 1;
+#X connect 13 0 24 0;
+#X connect 13 1 24 1;
+#X connect 14 0 13 1;
+#X connect 17 0 18 0;
+#X connect 17 1 18 1;
+#X connect 19 0 40 1;
+#X connect 20 0 25 0;
+#X connect 20 1 25 1;
+#X connect 21 0 20 1;
+#X connect 22 0 39 0;
+#X connect 23 0 41 0;
+#X connect 26 0 49 0;
+#X connect 27 0 5 0;
+#X connect 28 0 13 0;
+#X connect 29 0 20 0;
+#X connect 30 0 27 0;
+#X connect 31 0 30 0;
+#X connect 32 0 33 0;
+#X connect 33 0 30 2;
+#X connect 34 0 35 0;
+#X connect 35 0 38 2;
+#X connect 36 0 37 0;
+#X connect 37 0 40 2;
+#X connect 38 0 28 0;
+#X connect 39 0 38 0;
+#X connect 40 0 29 0;
+#X connect 41 0 40 0;
 #X connect 43 0 44 0;
-#X connect 44 0 45 0;
-#X connect 45 0 46 0;
-#X connect 46 0 17 0;
-#X connect 47 0 48 0;
-#X connect 48 0 49 0;
-#X connect 49 0 50 0;
-#X connect 50 0 26 0;
-#X connect 51 0 39 0;
-#X connect 52 0 43 0;
-#X connect 53 0 47 0;
-#X connect 54 0 55 0;
-#X connect 55 0 51 1;
-#X connect 55 0 53 1;
-#X connect 55 0 52 1;
+#X connect 45 0 47 0;
+#X connect 46 0 48 0;
 #X restore 267 197 pd sound;
 #X text 326 197 MIDI sound generation from Motion+ data;
 #X text 13 325 INSTRUCTIONS: (1) Open the device by clicking the red
@@ -439,6 +494,10 @@ on the Wiimote) to calibrate the Motion+ location data. Wait until
 the x y z values stabilize. (4) Connect the data to some sound generator
 to have fun., f 36;
 #X obj 267 173 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 289 173 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 312 173 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X connect 1 0 2 0;
 #X connect 2 0 59 0;
@@ -495,3 +554,5 @@ to have fun., f 36;
 #X connect 62 0 58 0;
 #X connect 64 0 61 0;
 #X connect 71 0 68 0;
+#X connect 72 0 68 1;
+#X connect 73 0 68 2;
